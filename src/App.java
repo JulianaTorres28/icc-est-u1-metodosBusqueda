@@ -1,19 +1,29 @@
 import controllers.MetodosBusqueda;
 import models.Person;
+import views.ShowConsole;
 
 public class App {
     public static void main(String[] args) throws Exception {
 
-        Person[] personas= new Person[7];
-        personas[0]= new Person (101, "Juan");
-        personas[1]= new Person (102, "Mauricio");
-        personas[2]= new Person (103, "Miguel");
-        personas[3]= new Person (104, "Carlos");
-        personas[4]= new Person (105, "Ana");
-        personas[5]= new Person (106, "Maria");
-        personas[6]= new Person (107, "Sofia");
-        MetodosBusqueda mB = new MetodosBusqueda(personas);
-        
+        ShowConsole showConsole = new ShowConsole();
 
+        int numero = showConsole.getInt("Ingrese cantidad de Personas del listado: ");
+        Person[] personas = new Person[numero];
+        
+        for(int i = 0; i < numero; i++) {
+            System.out.println("Ingrese Persona:");
+            String nombre = showConsole.getString("Nombre: ");
+            int age;
+            do {
+                age = showConsole.getInt("Edad: ");
+                if (age < 0) {
+                    System.out.println("La edad no puede ser negativa. Intente de nuevo.");
+                }
+            } while (age < 0);
+            personas[i] = new Person(nombre, age);
+        }
+
+        // Aquí llamas directamente a la clase que ya ordena y busca
+        MetodosBusqueda mB = new MetodosBusqueda(personas);
     }
 }

@@ -1,27 +1,24 @@
 package models;
 
 public class Person {
-    private int code;
     private String name;
-    public Person(int code, String name) {
-        this.code = code;
+    private int age;
+
+    public Person(String name, int age) {
         this.name = name;
+        this.age = age;
     }
-    public int getCode() {
-        return code;
-    }
-    public void setCode(int code) {
-        this.code = code;
-    }
+
     public String getName() {
         return name;
     }
-    public void setName(String name) {
-        this.name = name;
+
+    public int getAge() {
+        return age;
     }
+
     @Override
     public String toString() {
-        return "Person [code=" + code + ", name=" + name + "]";
+        return name + " (" + age + ")";
     }
-    
 }
